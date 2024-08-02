@@ -11,4 +11,6 @@ app.use(cors())
 
 connectDB()
 
+app.use('/user', require('./Routers/UserRouter'))
+
 app.listen(PORT, console.log(`Running on port ${PORT}`))
