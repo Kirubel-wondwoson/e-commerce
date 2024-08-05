@@ -12,5 +12,6 @@ app.use(cors())
 connectDB()
 
 app.use('/user', require('./Routers/UserRouter'))
+app.use('/product', require('./Routers/ProductRouter'))
 
 app.listen(PORT, console.log(`Running on port ${PORT}`))
