@@ -7,7 +7,7 @@ exports.CreateAccount = async(req, res) => {
     const {name,phone,password,role,age} = req.body
     const existingUser = await User.findOne({phone: phone})
     if (existingUser){
-      return res.send('Phone number already exists')
+      return res.status(501).send('Phone number already exists')
     }
     const saltRounds = 10; // number of rounds (salt round): indicates how many times the hashing algorithm applied.
     const hashedPassword = await bcrypt.hash(password, saltRounds);

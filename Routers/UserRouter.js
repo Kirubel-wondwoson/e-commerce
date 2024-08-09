@@ -5,7 +5,7 @@ const {CreateAccount, LogIn, EditInfo, ListUsers, DeleteUser} = require('../Cont
 
 router.post('/signup', CreateAccount)
 router.post('/login', LogIn)
-router.post('/editinfo/:id', EditInfo)
+router.patch('/editinfo/:id', EditInfo)
 router.get('/getuser', ListUsers)
 router.delete('/deleteuser/:id',DeleteUser)
 
