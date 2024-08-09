@@ -2,70 +2,109 @@ const express = require('express')
 const bcrypt = require('bcrypt')
 const User = require('../Models/UserModel')
 
-exports.CreateAccount = async(req, res) => {
+exports.CreateAccount = async (req, res) => {
   try {
-    const {name,phone,password,role,age} = req.body
-    const existingUser = await User.findOne({phone: phone})
-    if (existingUser){
+    const { name, phone, password, role, age } = req.body
+    const existingUser = await User.findOne({ phone: phone })
+    if (existingUser) {
       return res.status(501).send('Phone number already exists')
     }
+    // const saltRounds = bcrypt.genSalt(10)
     const saltRounds = 10; // number of rounds (salt round): indicates how many times the hashing algorithm applied.
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    const user ={name,phone,password:hashedPassword,role,age}
+    const user = { name, phone, password: hashedPassword, role, age }
 
     await User.create(user)
     res.send(user)
   } catch (error) {
-    res.send(err)
+    res.status(401).send(err)
   }
 }
-exports.ListUsers = async(req, res) => {
+exports.ListUsers = async (req, res) => {
   try {
     let users = await User.find()
     res.send(users)
   } catch (error) {
-    res.send(err)
+    res.status(501).send(err)
   }
 }
-exports.LogIn = async(req, res) => {
+
+// get specific user by id
+exports.UserProfile = async (req, res) => {
   try {
-    const {phone, password} = req.body
-    const user = await User.findOne({phone})
-    if (user){
-      const isMatch = await bcrypt.compare(password, user.password)
-      if(isMatch){
-        res.send(`Welcome, ${user.name}! You're now logged in.`)
-      }else{
-        return res.send("Incorrect username or password. Please try again.")  
-      }
-    } else{
+    const user = await User.findById(req.params.id)
+    res.status(200).json(user)
+  } catch (error) {
+    res.status(501).send(err)
+  }
+}
+exports.LogIn = async (req, res) => {
+  try {
+    const { phone, password } = req.body
+    const user = await User.findOne({ phone })
+    if (!user) {
       return res.send("Incorrect username or password. Please try again.")
     }
+
+    const isMatch = await bcrypt.compare(password, user.password)
+    if (isMatch) {
+      res.status(200).send(`Welcome, ${user.name}! You're now logged in.`)
+    } else {
+      return res.status(401).send("Incorrect username or password. Please try again.")
+    }
+
   } catch (error) {
     res.send(err)
   }
 }
 exports.EditInfo = async (req, res) => {
   try {
-    const {name, phone, role, password, age} = req.body
+    const { name, phone, role, age } = req.body
     const editUser = await User.findByIdAndUpdate(
       req.params.id,
-      {name, phone, role, password, age},
-      {new: true}
+      { name, phone, role, age },
+      { new: true }
     );
-    res.send(editUser)
+    res.status(200).send(editUser)
   } catch (error) {
     res.send(err)
   }
 }
+
+// Change Password
+
+exports.ChangePassword = async (req, res) => {
+  try {
+    const userId = req.params.id
+    const {OldPassword, NewPassword} = req.body
+
+    const userToChange = await User.findById(userId)
+    if(!userToChange) {
+      res.status(404).send("User not found.")
+    }
+    const isMatch = await bcrypt.compare(OldPassword, userToChange.password)
+    if(!isMatch){
+      res.status(401).send("Incorrect old password. please try again.")
+    }
+    const saltRounds = 10; 
+    const hashedPassword = await bcrypt.hash(NewPassword, saltRounds);
+
+    userToChange.password = hashedPassword
+    await userToChange.save()
+    res.status(200).send("Password changed sucessfully!!")
+  } catch (error) {
+    res.send(err)
+  }
+}
+// Role based Delete user
 exports.DeleteUser = async (req, res) => {
   try {
     const userId = req.params.id
     const userToDelete = await User.findById(userId)
 
-    if(!userToDelete){
-      return res.status(404).send({msg:'User not found'})
+    if (!userToDelete) {
+      return res.status(404).send({ msg: 'User not found' })
     }
     await User.findByIdAndDelete(userId)
     res.send("User deleted Succesfully!")
