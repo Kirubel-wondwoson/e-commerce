@@ -114,6 +114,6 @@ exports.DeleteUser = async (req, res) => {
     await User.findByIdAndDelete(userId)
     res.send("User deleted Succesfully!")
   } catch (error) {
-    res.send(err)
+    res.send(error)
   }
 }

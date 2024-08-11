@@ -2,14 +2,15 @@ const express = require('express')
 const router = express.Router()
 
 const authenticateToken = require('../Middleware/authenticateToken')
+const  authenticateTokenRole = require('../Middleware/authenticateTokenRole')
 const {CreateAccount, LogIn, EditInfo, ListUsers, DeleteUser, ChangePassword, UserProfile} = require('../Controller/UserController')
 
 router.post('/signup', CreateAccount)
 router.post('/login', LogIn)
-router.patch('/editinfo/:id', EditInfo)
-router.patch('/changepassword/:id', ChangePassword)
+router.patch('/editinfo/:id',authenticateToken ,EditInfo)
+router.patch('/changepassword/:id',authenticateToken, ChangePassword)
 router.get('/getuser', ListUsers)
 router.get('/userprofile/:id',authenticateToken, UserProfile)
-router.delete('/deleteuser/:id',DeleteUser)
+router.delete('/deleteuser/:id',authenticateTokenRole, DeleteUser)
 
 module.exports = router

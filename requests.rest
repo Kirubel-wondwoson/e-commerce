@@ -1,3 +1,4 @@
+
 POST http://localhost:3000/user/login
 Content-Type: application/json
 
@@ -7,10 +8,27 @@ Content-Type: application/json
 }
 
 ###
-
-GET http://localhost:3000/user/userprofile/66ad4b0cccd2ed137747d59e
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInBob25lIjoiMDk4NzMyNDIyOCIsInJvbGUiOiJBZG1pbiIsInBhc3N3b3JkIjoiJDJiJDEwJEpVanE1LkhIZGx4UkFOM2J6b1JJUi5Ob2wvUWpsNU1VNS8ycEpTdi83cmpMYlh6dm1pVzk2IiwiYWdlIjoyMSwiaWF0IjoxNzIzMzc0MjY0fQ.jAs3GlywhcoYP5ddcQsd4SMujxDe10ZRcRFeeffm2cM
+GET http://localhost:3000/user/getuser
 
 ###
 
-GET http://localhost:3000/user/getuser
+GET http://localhost:3000/user/userprofile/66ad4b0cccd2ed137747d59e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInBob25lIjoiMDk4NzMyNDIyOCIsInJvbGUiOiJBZG1pbiIsInBhc3N3b3JkIjoiJDJiJDEwJEpVanE1LkhIZGx4UkFOM2J6b1JJUi5Ob2wvUWpsNU1VNS8ycEpTdi83cmpMYlh6dm1pVzk2IiwiYWdlIjoyMSwiaWF0IjoxNzIzMzk2NzMxfQ.FnXBTqWfTfnoJXh4OSyT-LmP1maSe8UWdcd_8pT-Eq4
+
+
+###
+
+DELETE  http://localhost:3000/user/deleteuser/66b391b4baccce4626b78c2d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRGFkIiwicGhvbmUiOiIwOTEyMTMxNDE1Iiwicm9sZSI6IkN1c3RvbWVyIiwicGFzc3dvcmQiOiIkMmIkMTAkWjViT3lDMmQ0U0VOS2p3OWZkdnhTLmZtZG5jVkVUZFQ0Ull0S0s2SnNLNndOR2NRckVQQXUiLCJhZ2UiOjQwLCJpYXQiOjE3MjMzNzkwOTh9.EHT5bDuVrem9AQl0G3HT_xoGDYoJgBGJCwkD9lP1C2s
+
+
+###
+PATCH http://localhost:3000/user/editinfo/66ad4b5eccd2ed137747d5a8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWJlbmkiLCJwaG9uZSI6IjA5MDAwMDAwMDAiLCJyb2xlIjoiQWRtaW4iLCJwYXNzd29yZCI6IiQyYiQxMCRYem9sTEQucm5haE9NbS5mZkVMTk11WE84aENaRHV2OS5BMEY4dzB3Nmt2d25FQ0xTeW1uMiIsImFnZSI6MjEsImlhdCI6MTcyMzM4MjEzN30.2BKRpFiVDUhGKkCNNgOlwu5V65wgbpZ2EitRafxN4bU
+Content-Type: application/json
+
+{
+  "name":"Abeni",
+  "phone":"0905050500",
+  "password":"Abeni1234"
+}
