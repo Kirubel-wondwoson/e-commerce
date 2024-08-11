@@ -1,5 +1,6 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 const User = require('../Models/UserModel')
 
 exports.CreateAccount = async (req, res) => {
@@ -49,13 +50,16 @@ exports.LogIn = async (req, res) => {
 
     const isMatch = await bcrypt.compare(password, user.password)
     if (isMatch) {
-      res.status(200).send(`Welcome, ${user.name}! You're now logged in.`)
+      // res.status(200).send(`Welcome, ${user.name}! You're now logged in.`)
+      const tempuser = {name: user.name, phone:user.phone, role:user.role, password: user.password, age: user.age}
+      const accessToken = jwt.sign(tempuser, process.env.ACCESS_TOKEN_SECRET);
+      return res.json({ message: `Welcome, ${user.name}!`, accessToken });
     } else {
       return res.status(401).send("Incorrect username or password. Please try again.")
     }
 
   } catch (error) {
-    res.send(err)
+    res.send(error)
   }
 }
 exports.EditInfo = async (req, res) => {
@@ -97,6 +101,7 @@ exports.ChangePassword = async (req, res) => {
     res.send(err)
   }
 }
+
 // Role based Delete user
 exports.DeleteUser = async (req, res) => {
   try {
