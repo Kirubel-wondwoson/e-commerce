@@ -1,6 +1,7 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+
 const User = require('../Models/UserModel')
 
 exports.CreateAccount = async (req, res) => {
@@ -32,7 +33,7 @@ exports.ListUsers = async (req, res) => {
 }
 
 // get specific user by id
-exports.UserProfile = async (req, res) => {
+exports.UserProfile = async (req,res) => {
   try {
     const user = await User.findById(req.params.id)
     res.status(200).json(user)
@@ -50,7 +51,6 @@ exports.LogIn = async (req, res) => {
 
     const isMatch = await bcrypt.compare(password, user.password)
     if (isMatch) {
-      // res.status(200).send(`Welcome, ${user.name}! You're now logged in.`)
       const tempuser = {name: user.name, phone:user.phone, role:user.role, password: user.password, age: user.age}
       const accessToken = jwt.sign(tempuser, process.env.ACCESS_TOKEN_SECRET);
       return res.json({ message: `Welcome, ${user.name}!`, accessToken });

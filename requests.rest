@@ -1,4 +1,3 @@
-
 POST http://localhost:3000/user/login
 Content-Type: application/json
 
@@ -6,3 +5,12 @@ Content-Type: application/json
   "phone":"0987324228",
   "password":"Kirubel1995"
 }
+
+###
+
+GET http://localhost:3000/user/userprofile/66ad4b0cccd2ed137747d59e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInBob25lIjoiMDk4NzMyNDIyOCIsInJvbGUiOiJBZG1pbiIsInBhc3N3b3JkIjoiJDJiJDEwJEpVanE1LkhIZGx4UkFOM2J6b1JJUi5Ob2wvUWpsNU1VNS8ycEpTdi83cmpMYlh6dm1pVzk2IiwiYWdlIjoyMSwiaWF0IjoxNzIzMzc0MjY0fQ.jAs3GlywhcoYP5ddcQsd4SMujxDe10ZRcRFeeffm2cM
+
+###
+
+GET http://localhost:3000/user/getuser
