@@ -10,7 +10,7 @@ authenticateTokenRole = (req, res, next) => {
     if (err) return res.sendStatus(403) 
     req.user = user
     if (req.user.role !== "Admin" && req.user._id !== req.params.id) {
-      res.sendStatus(403)
+      return res.sendStatus(403)
     }
     next()
   })

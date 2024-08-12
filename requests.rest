@@ -1,26 +1,26 @@
 
-POST http://localhost:3000/user/login
-Content-Type: application/json
-
-{
-  "phone":"0987324228",
-  "password":"Kirubel1995"
-}
-
-###
 GET http://localhost:3000/user/getuser
 
 ###
 
-GET http://localhost:3000/user/userprofile/66ad4b0cccd2ed137747d59e
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+  "phone":"0912131415", 
+  "password":"Dad1234"
+}
+
+###
+
+GET http://localhost:3000/user/userprofile/66b8ad28111c19cf17fd6398
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInBob25lIjoiMDk4NzMyNDIyOCIsInJvbGUiOiJBZG1pbiIsInBhc3N3b3JkIjoiJDJiJDEwJEpVanE1LkhIZGx4UkFOM2J6b1JJUi5Ob2wvUWpsNU1VNS8ycEpTdi83cmpMYlh6dm1pVzk2IiwiYWdlIjoyMSwiaWF0IjoxNzIzMzk2NzMxfQ.FnXBTqWfTfnoJXh4OSyT-LmP1maSe8UWdcd_8pT-Eq4
 
 
 ###
 
-DELETE  http://localhost:3000/user/deleteuser/66b391b4baccce4626b78c2d
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRGFkIiwicGhvbmUiOiIwOTEyMTMxNDE1Iiwicm9sZSI6IkN1c3RvbWVyIiwicGFzc3dvcmQiOiIkMmIkMTAkWjViT3lDMmQ0U0VOS2p3OWZkdnhTLmZtZG5jVkVUZFQ0Ull0S0s2SnNLNndOR2NRckVQQXUiLCJhZ2UiOjQwLCJpYXQiOjE3MjMzNzkwOTh9.EHT5bDuVrem9AQl0G3HT_xoGDYoJgBGJCwkD9lP1C2s
-
+DELETE  http://localhost:3000/user/deleteuser/66ba237852c44b9092c31e9c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRGFkIiwicGhvbmUiOiIwOTEyMTMxNDE1Iiwicm9sZSI6IkN1c3RvbWVyIiwicGFzc3dvcmQiOiIkMmIkMTAkWjViT3lDMmQ0U0VOS2p3OWZkdnhTLmZtZG5jVkVUZFQ0Ull0S0s2SnNLNndOR2NRckVQQXUiLCJhZ2UiOjQwLCJpYXQiOjE3MjM0NzQ4ODh9.WrLNivj-TMVFQ-2gTY92n8YPjVVqWk4fHUEiYbzuUOo
 
 ###
 PATCH http://localhost:3000/user/editinfo/66ad4b5eccd2ed137747d5a8
@@ -31,4 +31,17 @@ Content-Type: application/json
   "name":"Abeni",
   "phone":"0905050500",
   "password":"Abeni1234"
+}
+
+
+###
+POST http://localhost:3000/user/signup
+Content-Type: application/json
+
+{
+  "name":"Yasub",
+  "phone":"0971717171",
+  "role":"Customer",
+  "password":"Yasub1234",
+  "age":22
 }
