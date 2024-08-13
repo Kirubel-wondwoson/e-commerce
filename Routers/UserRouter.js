@@ -11,6 +11,6 @@ router.patch('/editinfo/:id',authenticateToken ,EditInfo)
 router.patch('/changepassword/:id',authenticateToken, ChangePassword)
 router.get('/getuser', ListUsers)
 router.get('/userprofile/:id',authenticateToken, UserProfile)
-router.delete('/deleteuser/:id',authenticateTokenRole, DeleteUser)
+router.delete('/deleteuser/:id',authenticateToken, DeleteUser)
 
 module.exports = router

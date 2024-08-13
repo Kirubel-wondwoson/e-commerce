@@ -52,7 +52,7 @@ exports.LogIn = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password)
     if (isMatch) {
       const tempuser = {name: user.name, phone:user.phone, role:user.role, password: user.password, age: user.age}
-      const accessToken = jwt.sign(tempuser, process.env.ACCESS_TOKEN_SECRET);
+      const accessToken = jwt.sign(tempuser, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "10m"});
       return res.json({ message: `Welcome, ${user.name}!`, accessToken });
     } else {
       return res.status(401).send("Incorrect username or password. Please try again.")
@@ -85,11 +85,11 @@ exports.ChangePassword = async (req, res) => {
 
     const userToChange = await User.findById(userId)
     if(!userToChange) {
-      res.status(404).send("User not found.")
+      return res.status(404).send("User not found.")
     }
     const isMatch = await bcrypt.compare(OldPassword, userToChange.password)
     if(!isMatch){
-      res.status(401).send("Incorrect old password. please try again.")
+      return res.status(401).send("Incorrect old password. please try again.")
     }
     const saltRounds = 10; 
     const hashedPassword = await bcrypt.hash(NewPassword, saltRounds);
@@ -105,12 +105,19 @@ exports.ChangePassword = async (req, res) => {
 // Role based Delete user
 exports.DeleteUser = async (req, res) => {
   try {
+    // (1) The User to be deleted
     const userId = req.params.id
     const userToDelete = await User.findById(userId)
-
+    
     if (!userToDelete) {
       return res.status(404).send({ msg: 'User not found' })
     }
+
+    // (2) The User Logged In (requests)
+    if (req.user.role !== "Admin") {
+      return res.sendStatus(403)
+    }
+
     await User.findByIdAndDelete(userId)
     res.send("User deleted Succesfully!")
   } catch (error) {

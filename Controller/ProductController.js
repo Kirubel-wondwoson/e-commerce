@@ -5,7 +5,7 @@ exports.GetProducts = async(req, res) => {
     const products = await Product.find();
     res.send(products)
   } catch (error) {
-    res.send(err)
+    res.status(501).send(error)
   }
 }
 exports.AddProduct = async(req, res) => {
