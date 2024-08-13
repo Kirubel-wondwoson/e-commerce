@@ -38,7 +38,7 @@ exports.UserProfile = async (req,res) => {
     const user = await User.findById(req.params.id)
     res.status(200).json(user)
   } catch (error) {
-    res.status(501).send(err)
+    res.status(501).send(error)
   }
 }
 exports.LogIn = async (req, res) => {
@@ -108,13 +108,13 @@ exports.DeleteUser = async (req, res) => {
     // (1) The User to be deleted
     const userId = req.params.id
     const userToDelete = await User.findById(userId)
-    
+
     if (!userToDelete) {
       return res.status(404).send({ msg: 'User not found' })
     }
 
     // (2) The User Logged In (requests)
-    if (req.user.role !== "Admin") {
+    if (req.user.role !== "Admin" && userToDelete.phone !== req.user.phone) {
       return res.sendStatus(403)
     }
 
