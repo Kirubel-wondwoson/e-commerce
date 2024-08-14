@@ -4,7 +4,7 @@ const authenticateToken = require('../Middleware/authenticateToken')
 
 const {GetProducts, AddProduct, EditProduct, DeleteProduct} = require('../Controller/ProductController')
 
-router.get('/getproducts', GetProducts)
+router.get('/getproducts', authenticateToken, GetProducts)
 router.post('/addproduct', authenticateToken, AddProduct)
 router.patch('/editproduct/:id', authenticateToken, EditProduct)
 router.delete('/deleteproduct/:id', authenticateToken, DeleteProduct)

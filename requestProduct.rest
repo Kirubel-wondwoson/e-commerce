@@ -6,18 +6,18 @@ POST http://localhost:3000/user/login
 Content-Type: application/json
 
 {
-  "phone":"0971717171",
-  "password":"Yasub1234"
+  "phone":"0987324228",
+  "password":"Kirubel1995"
 }
 
 ###
 POST http://localhost:3000/product/addproduct
-Authorization: Bearer eeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiWWFzdWIiLCJwaG9uZSI6IjA5NzE3MTcxNzEiLCJyb2xlIjoiQ3VzdG9tZXIiLCJwYXNzd29yZCI6IiQyYiQxMCRUQ0RWMnlQUnpqRUhlQzhVLy9nNkxPL0k5NkJjWWRrRWVFbG94akQuOHNoeHlEdXdvWmFCVyIsImFnZSI6MjIsImlhdCI6MTcyMzU1NTgwNSwiZXhwIjoxNzIzNTU2NDA1fQ.gWWj0dicrWADcyjRIMYyxecGRcyydYrYltXpGA_X5Hc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInBob25lIjoiMDk4NzMyNDIyOCIsInJvbGUiOiJBZG1pbiIsInBhc3N3b3JkIjoiJDJiJDEwJEpVanE1LkhIZGx4UkFOM2J6b1JJUi5Ob2wvUWpsNU1VNS8ycEpTdi83cmpMYlh6dm1pVzk2IiwiYWdlIjoyMSwiaWF0IjoxNzIzNjQ4MjM4LCJleHAiOjE3MjM2NDg4Mzh9.D6BPTF5dAQx715CieWPEl-bsDlZvhrrHDakOvTiuNMY
 Content-Type: application/json
 
 {
-  "name":"water",
+  "name":"cup",
   "price":10,
-  "productId":"wa",
+  "productId":"cup1",
   "category":"other"
 }

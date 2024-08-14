@@ -13,5 +13,6 @@ connectDB()
 
 app.use('/user', require('./Routers/UserRouter'))
 app.use('/product', require('./Routers/ProductRouter'))
+app.use('/order', require('./Routers/OrderRouter'))
 
 app.listen(PORT, console.log(`Running on port ${PORT}`))

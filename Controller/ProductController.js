@@ -8,6 +8,18 @@ exports.GetProducts = async(req, res) => {
     res.status(501).send(error)
   }
 }
+exports.GetSpecificProduct = async(req, res) => {
+  try {
+    const productId = req.params.id
+    const product = await Product.findById(productId)
+    if(!product){
+      return res.status(401).send('Product not found')
+    }
+    res.send(product)
+  } catch (error) {
+    res.send(error)
+  }
+}
 exports.AddProduct = async(req, res) => {
   if (req.user.role !== "Admin"){
     return res.status(403).send('Not authorized to add products')
@@ -42,6 +54,10 @@ exports.DeleteProduct = async (req, res) => {
     res.status(403).send("Not authorized to delete a product")
   }
   try {
+    const product = await Product.findById(req.params.id)
+    if(!product){
+      return res.status(401).send("Product not found")
+    }
     await Product.findByIdAndDelete(req.params.id)
     res.send("Deleted Successfully!!")
   } catch (error) {
