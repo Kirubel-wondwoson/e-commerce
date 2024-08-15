@@ -18,6 +18,10 @@ const ProductSchema = mongoose.Schema({
     enum: ["electronics","clothing","book", "other"],
     required: false
   },
+  quantity:{
+    type: Number,
+    required: true
+  },
   brand: {
     type: String,
     required: false

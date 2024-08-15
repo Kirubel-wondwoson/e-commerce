@@ -25,8 +25,8 @@ exports.AddProduct = async(req, res) => {
     return res.status(403).send('Not authorized to add products')
   }
   try {
-    const {name,price, productId, category, brand} = req.body
-    const product = await Product.create({name, price, productId, category, brand})
+    const {name,price, productId, category,quantity, brand} = req.body
+    const product = await Product.create({name, price, productId, category, quantity,brand})
     res.send(product)
   } catch (error) {
     res.send(error)
@@ -38,10 +38,10 @@ exports.EditProduct = async(req, res) => {
     res.status(403).send("Not authorized to change a product")
   }
   try {
-    const {name, price, productId, category, brand} = req.body
+    const {name, price, productId, category,quantity, brand} = req.body
     const editedProduct = await Product.findByIdAndUpdate(
       req.params.id,
-      {name, price, productId, category, brand},
+      {name, price, productId, category, quantity, brand},
       {new: true}
     )
     res.send(editedProduct)

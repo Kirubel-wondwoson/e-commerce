@@ -1,4 +1,5 @@
 GET http://localhost:3000/product/getproducts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInBob25lIjoiMDk4NzMyNDIyOCIsInJvbGUiOiJBZG1pbiIsInBhc3N3b3JkIjoiJDJiJDEwJEpVanE1LkhIZGx4UkFOM2J6b1JJUi5Ob2wvUWpsNU1VNS8ycEpTdi83cmpMYlh6dm1pVzk2IiwiYWdlIjoyMSwiaWF0IjoxNzIzNzEyODkzLCJleHAiOjE3MjM3MTM0OTN9.AsY6levU12OjAwsHNbydKPx8cfs3La4Bm9qAVG_o-k0
 ###
 GET http://localhost:3000/user/getuser   
 ###
@@ -12,12 +13,23 @@ Content-Type: application/json
 
 ###
 POST http://localhost:3000/product/addproduct
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInBob25lIjoiMDk4NzMyNDIyOCIsInJvbGUiOiJBZG1pbiIsInBhc3N3b3JkIjoiJDJiJDEwJEpVanE1LkhIZGx4UkFOM2J6b1JJUi5Ob2wvUWpsNU1VNS8ycEpTdi83cmpMYlh6dm1pVzk2IiwiYWdlIjoyMSwiaWF0IjoxNzIzNjQ4MjM4LCJleHAiOjE3MjM2NDg4Mzh9.D6BPTF5dAQx715CieWPEl-bsDlZvhrrHDakOvTiuNMY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInBob25lIjoiMDk4NzMyNDIyOCIsInJvbGUiOiJBZG1pbiIsInBhc3N3b3JkIjoiJDJiJDEwJEpVanE1LkhIZGx4UkFOM2J6b1JJUi5Ob2wvUWpsNU1VNS8ycEpTdi83cmpMYlh6dm1pVzk2IiwiYWdlIjoyMSwiaWF0IjoxNzIzNzEyNzU1LCJleHAiOjE3MjM3MTMzNTV9.mTTCoH1y2moKwUGW7gzS777Zo_nTkz-4e0HCX-BCnms
 Content-Type: application/json
 
 {
-  "name":"cup",
-  "price":10,
-  "productId":"cup1",
-  "category":"other"
+    "name": "shoe",
+    "price": 4000,
+    "productId": "shoe2",
+    "category": "clothing",
+    "quantity": 5,
+    "brand": "nike"
+}
+
+###
+PATCH  http://localhost:3000/product/editproduct/66bdc548be867904979934c1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInBob25lIjoiMDk4NzMyNDIyOCIsInJvbGUiOiJBZG1pbiIsInBhc3N3b3JkIjoiJDJiJDEwJEpVanE1LkhIZGx4UkFOM2J6b1JJUi5Ob2wvUWpsNU1VNS8ycEpTdi83cmpMYlh6dm1pVzk2IiwiYWdlIjoyMSwiaWF0IjoxNzIzNzEyODkzLCJleHAiOjE3MjM3MTM0OTN9.AsY6levU12OjAwsHNbydKPx8cfs3La4Bm9qAVG_o-k0
+Content-Type: application/json
+
+{
+  "quantity":5
 }
