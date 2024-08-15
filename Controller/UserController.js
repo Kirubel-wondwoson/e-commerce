@@ -51,8 +51,8 @@ exports.LogIn = async (req, res) => {
 
     const isMatch = await bcrypt.compare(password, user.password)
     if (isMatch) {
-      const tempuser = {name: user.name, phone:user.phone, role:user.role, password: user.password, age: user.age}
-      const accessToken = jwt.sign(tempuser, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "10m"});
+      const tempuser = {name: user.name, role:user.role,userId: user._id}
+      const accessToken = jwt.sign(tempuser, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "30m"});
       return res.json({ message: `Welcome, ${user.name}!`, accessToken });
     } else {
       return res.status(401).send("Incorrect username or password. Please try again.")
