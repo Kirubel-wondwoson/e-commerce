@@ -1,5 +1,5 @@
 GET http://localhost:3000/product/getproducts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInBob25lIjoiMDk4NzMyNDIyOCIsInJvbGUiOiJBZG1pbiIsInBhc3N3b3JkIjoiJDJiJDEwJEpVanE1LkhIZGx4UkFOM2J6b1JJUi5Ob2wvUWpsNU1VNS8ycEpTdi83cmpMYlh6dm1pVzk2IiwiYWdlIjoyMSwiaWF0IjoxNzIzNzEyODkzLCJleHAiOjE3MjM3MTM0OTN9.AsY6levU12OjAwsHNbydKPx8cfs3La4Bm9qAVG_o-k0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInJvbGUiOiJBZG1pbiIsInVzZXJJZCI6IjY2YWQ0YjBjY2NkMmVkMTM3NzQ3ZDU5ZSIsImlhdCI6MTcyMzc5Njc5NiwiZXhwIjoxNzIzNzk4NTk2fQ.HRcax9YnIlMSOHBUADkV66sx4BVaKQ8pa1vqWXaajoc
 ###
 GET http://localhost:3000/user/getuser   
 ###
@@ -13,13 +13,13 @@ Content-Type: application/json
 
 ###
 POST http://localhost:3000/product/addproduct
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInBob25lIjoiMDk4NzMyNDIyOCIsInJvbGUiOiJBZG1pbiIsInBhc3N3b3JkIjoiJDJiJDEwJEpVanE1LkhIZGx4UkFOM2J6b1JJUi5Ob2wvUWpsNU1VNS8ycEpTdi83cmpMYlh6dm1pVzk2IiwiYWdlIjoyMSwiaWF0IjoxNzIzNzEyNzU1LCJleHAiOjE3MjM3MTMzNTV9.mTTCoH1y2moKwUGW7gzS777Zo_nTkz-4e0HCX-BCnms
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInJvbGUiOiJBZG1pbiIsInVzZXJJZCI6IjY2YWQ0YjBjY2NkMmVkMTM3NzQ3ZDU5ZSIsImlhdCI6MTcyMzc5NTEyNSwiZXhwIjoxNzIzNzk2OTI1fQ.qDDojk2hrAaEaHq5Gb8OnP-3_8cct96slkXVeoaGjvs
 Content-Type: application/json
 
 {
-    "name": "shoe",
+    "name": "tobedeleted",
     "price": 4000,
-    "productId": "shoe2",
+    "productId": "sth",
     "category": "clothing",
     "quantity": 5,
     "brand": "nike"
@@ -33,3 +33,7 @@ Content-Type: application/json
 {
   "quantity":5
 }
+
+###
+DELETE http://localhost:3000/product/deleteproduct/66b12ec95e4a1c1e60b0c30a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInJvbGUiOiJBZG1pbiIsInVzZXJJZCI6IjY2YWQ0YjBjY2NkMmVkMTM3NzQ3ZDU5ZSIsImlhdCI6MTcyMzc5Njc5NiwiZXhwIjoxNzIzNzk4NTk2fQ.HRcax9YnIlMSOHBUADkV66sx4BVaKQ8pa1vqWXaajoc

@@ -1,4 +1,5 @@
 const Product = require('../Models/ProductModel')
+const Order = require('../Models/OrderModel')
 
 exports.GetProducts = async(req, res) => {
   try {
@@ -57,6 +58,16 @@ exports.DeleteProduct = async (req, res) => {
     const product = await Product.findById(req.params.id)
     if(!product){
       return res.status(401).send("Product not found")
+    }
+    const orders = await Order.find()
+    for (var order of orders){
+      for (var element of order.orderProducts){
+        if(req.params.id === element.productId){
+          if(order.orderStatus === "Pending"){
+            return res.send("Can't delete a product in pending")
+          }
+        }
+      }
     }
     await Product.findByIdAndDelete(req.params.id)
     res.send("Deleted Successfully!!")
