@@ -9,5 +9,9 @@ router.get('/getorders',authenticateToken, GetOrders)
 router.get('/getmyorder', authenticateToken, GetMyOrder)
 router.patch('/editorder',authenticateToken, EditOrder)
 
+// router.post('/createorder', authenticateToken, CreateOrder)
+// router.get('/getorders',authenticateToken, GetOrders)
+// router.get('/getmyorder', authenticateToken, GetMyOrder)
+// router.patch('/editorder',authenticateToken, EditOrder)
 
 module.exports = router

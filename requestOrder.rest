@@ -15,25 +15,25 @@ Content-Type: application/json
 }
 ###
 GET http://localhost:3000/product/getproducts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInJvbGUiOiJBZG1pbiIsInVzZXJJZCI6IjY2YWQ0YjBjY2NkMmVkMTM3NzQ3ZDU5ZSIsImlhdCI6MTcyMzcyMTUwOSwiZXhwIjoxNzIzNzIzMzA5fQ.KatmAlnmD9nBh5doNxxebfS0LAmIYEfVFmySeI-PVTQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInJvbGUiOiJBZG1pbiIsInVzZXJJZCI6IjY2YWQ0YjBjY2NkMmVkMTM3NzQ3ZDU5ZSIsImlhdCI6MTcyMzc5ODc1MywiZXhwIjoxNzIzODAwNTUzfQ.Fxa8CMhOxPWd5XmbarkhwhXMCV9lqPMW8RThzhx-L9c
 
 
 
 ###
 GET http://localhost:3000/order/getorders
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInJvbGUiOiJBZG1pbiIsInVzZXJJZCI6IjY2YWQ0YjBjY2NkMmVkMTM3NzQ3ZDU5ZSIsImlhdCI6MTcyMzc5NTg2MCwiZXhwIjoxNzIzNzk3NjYwfQ.beAUYxVLMhEhN16hVeqyFm-dLmQ4NmmVQq0Vmp8RlL0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInJvbGUiOiJBZG1pbiIsInVzZXJJZCI6IjY2YWQ0YjBjY2NkMmVkMTM3NzQ3ZDU5ZSIsImlhdCI6MTcyMzc5ODc1MywiZXhwIjoxNzIzODAwNTUzfQ.Fxa8CMhOxPWd5XmbarkhwhXMCV9lqPMW8RThzhx-L9c
 
 ###
 POST http://localhost:3000/order/createorder
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRGFkIiwicm9sZSI6IkN1c3RvbWVyIiwidXNlcklkIjoiNjZiYjU0ZmQ4OWFiMTQyM2U1MTNlNzFkIiwiaWF0IjoxNzIzNzIzMzExLCJleHAiOjE3MjM3MjUxMTF9.preP2zcPnBtk3f-5bJJWl-q2do6mpdXY_gaWSFGby48
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInJvbGUiOiJBZG1pbiIsInVzZXJJZCI6IjY2YWQ0YjBjY2NkMmVkMTM3NzQ3ZDU5ZSIsImlhdCI6MTcyMzc5ODc1MywiZXhwIjoxNzIzODAwNTUzfQ.Fxa8CMhOxPWd5XmbarkhwhXMCV9lqPMW8RThzhx-L9c
 Content-Type: application/json
 
 {
   "userId":"66bb54fd89ab1423e513e71d",
-  "totalAmount":10000,
+  "totalAmount":5000,
   "orderProducts": [
-    {"productId":"66b12ec95e4a1c1e60b0c30a","quantity":10},
-    {"productId":"66bb5e289b36a0f5ba5677fa", "quantity":2}
+    {"productId":"66b12befbd1ead363ef67ef0","quantity":2},
+    {"productId":"66b12ec95e4a1c1e60b0c30a","quantity":1}
   ]
 }
 

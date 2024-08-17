@@ -13,7 +13,7 @@ Content-Type: application/json
 
 ###
 POST http://localhost:3000/product/addproduct
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInJvbGUiOiJBZG1pbiIsInVzZXJJZCI6IjY2YWQ0YjBjY2NkMmVkMTM3NzQ3ZDU5ZSIsImlhdCI6MTcyMzc5NTEyNSwiZXhwIjoxNzIzNzk2OTI1fQ.qDDojk2hrAaEaHq5Gb8OnP-3_8cct96slkXVeoaGjvs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInJvbGUiOiJBZG1pbiIsInVzZXJJZCI6IjY2YWQ0YjBjY2NkMmVkMTM3NzQ3ZDU5ZSIsImlhdCI6MTcyMzc5Njc5NiwiZXhwIjoxNzIzNzk4NTk2fQ.HRcax9YnIlMSOHBUADkV66sx4BVaKQ8pa1vqWXaajoc
 Content-Type: application/json
 
 {
@@ -35,5 +35,5 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/product/deleteproduct/66b12ec95e4a1c1e60b0c30a
+DELETE http://localhost:3000/product/deleteproduct/66bb5e289b36a0f5ba5677fa
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2lydWJlbCIsInJvbGUiOiJBZG1pbiIsInVzZXJJZCI6IjY2YWQ0YjBjY2NkMmVkMTM3NzQ3ZDU5ZSIsImlhdCI6MTcyMzc5Njc5NiwiZXhwIjoxNzIzNzk4NTk2fQ.HRcax9YnIlMSOHBUADkV66sx4BVaKQ8pa1vqWXaajoc
