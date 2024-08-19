@@ -78,7 +78,7 @@ exports.EditOrder = async (req, res) => {
     for(let element of orderProducts){
       var product = await Product.findById(element.productId)
       if(!product){
-        return res.send("Productnot found")
+        return res.send("Product not found")
       }
       if(element.quantity > product.quantity){
         return res.send(`Only ${product.quantity} ${product.name} avaliable.`)
