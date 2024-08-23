@@ -73,7 +73,7 @@ exports.EditOrder = async (req, res) => {
       return res.send("Order is Pending, can't edit.")
     }
 
-    const {userId, orderProducts, totalAmount} = req.body
+    const {orderProducts, totalAmount} = req.body
 
     for(let element of orderProducts){
       var product = await Product.findById(element.productId)
@@ -84,9 +84,10 @@ exports.EditOrder = async (req, res) => {
         return res.send(`Only ${product.quantity} ${product.name} avaliable.`)
       }
     }
+
     const orderEdited = await Order.findByIdAndUpdate(
       orderId,
-      {userId, orderProducts, totalAmount},
+      {orderProducts, totalAmount},
       {new: true}
     )
     res.send(orderEdited)

@@ -1,4 +1,3 @@
-const express = require('express')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -51,7 +50,7 @@ exports.LogIn = async (req, res) => {
 
     const isMatch = await bcrypt.compare(password, user.password)
     if (isMatch) {
-      const tempuser = {name: user.name, role:user.role,userId: user._id}
+      const tempuser = {name: user.name, role:user.role, userId: user._id}
       const accessToken = jwt.sign(tempuser, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "30m"});
       return res.json({ message: `Welcome, ${user.name}!`, accessToken });
     } else {
