@@ -60,7 +60,22 @@ exports.GetMyOrder = async (req, res) => {
   }
 }
 
-
+exports.GetUserOrder = async(req, res) => {
+  try {
+    const user = await User.findById(req.user.userId)
+    if(user.role !== ("Admin" || "Editor")){
+      return res.send("Not authorized")
+    }
+    const userOrder = await User.findById(req.params.id)
+    if(!userOrder){
+      return res.send("User not found")
+    }
+    const orders = await Order.find({userId: req.params.id})
+    res.status(201).send(orders)
+  } catch (error) {
+    res.status(402).send("Catch error")
+  }
+}
 // exports.EditOrder = async (req, res) => {
 //   if (req.user.role !== "Customer") {
 //     return res.send("Not authorized")
@@ -150,3 +165,16 @@ exports.EditOrder = async (req, res) => {
   }
 }
 
+exports.GetOrdersByStatus = async (req, res) => {
+  try {
+    if(req.user.role !== "Admin"){
+      return res.send("Not authorized")
+    }
+
+    const {orderStatus} = req.body
+    const orders = await Order.find({orderStatus: orderStatus})
+    res.send(orders)
+  } catch (error) {
+    res.status(403).send("Catch error")
+  }
+}
